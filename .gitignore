@@ -2,3 +2,5 @@
 *.pro
 
 lab1.pro.user
+
+*.autosave
