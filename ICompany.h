@@ -5,6 +5,12 @@
 class ICompany
 {
 public:
+    enum COMPANY_TYPE
+    {
+        COMPANY_TYPE_1,
+        COMPANY_TYPE_2,
+        COMPANY_TYPE_3
+    };
     ICompany() = default;
     virtual void setCompanyName(QString CompanyName) = 0;
     virtual void setOwnersList(QList<QString> ownersList) = 0;
@@ -18,7 +24,7 @@ public:
     virtual double getArea() = 0;
     virtual int getNumberOfEmployees() = 0;
 
-    virtual QString getCompanyType() = 0;
+    virtual COMPANY_TYPE getCompanyType() = 0;
     virtual double getTax() = 0;
 };
 
