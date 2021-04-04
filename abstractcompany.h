@@ -8,10 +8,7 @@
 class AbstractCompany:public ICompany
 {
 public:
-    enum COMPANY_TYPE
-    {
-//???
-    }
+
    ;
     AbstractCompany() = default;
     AbstractCompany(QString companyName, QList<QString> ownersList, double income, double area, int numberOfEmployees);
@@ -28,10 +25,10 @@ public:
     virtual double getArea();
     virtual int getNumberOfEmployees();
 
-    virtual QString getCompanyType() = 0;
+    virtual COMPANY_TYPE getCompanyType() = 0;
     virtual double getTax() = 0;
 
-    ~AbstractCompany() = default;
+    virtual ~AbstractCompany() = default;
 
 protected:
     QString companyName_;

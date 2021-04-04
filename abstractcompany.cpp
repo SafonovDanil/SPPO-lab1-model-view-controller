@@ -2,21 +2,43 @@
 
 AbstractCompany::AbstractCompany(QString companyName, QList<QString> ownersList, double income, double area, int numberOfEmployees)
 {
-    companyName_ = companyName;
-    ownersList_ = ownersList;
+    if(!companyName_.isEmpty())
+        companyName_ = companyName;
+    else
+        throw QString("empty company name");
+
+    if(!ownersList_.isEmpty())
+        ownersList_ = ownersList;
+    else
+        throw QString("empty owners list");
+
     income_ = income;
-    area_ = area;
-    numberOfEmployees_ = numberOfEmployees;
+
+    if(area>=0)
+        area_ = area;
+    else
+        throw QString("negative area");
+
+    if(numberOfEmployees>=0)
+        numberOfEmployees_ = numberOfEmployees;
+    else
+        throw QString("negative number of employees");
 }
 
 void AbstractCompany::setCompanyName(QString companyName)
 {
-    companyName_ = companyName;
+    if(!companyName_.isEmpty())
+        companyName_ = companyName;
+    else
+        throw QString("empty company name");
 }
 
 void AbstractCompany::setOwnersList (QList<QString> ownersList)
 {
-    ownersList_ = ownersList;
+    if(!ownersList_.isEmpty())
+        ownersList_ = ownersList;
+    else
+        throw QString("empty owners list");
 }
 
 void AbstractCompany::setIncome(double income)
@@ -26,12 +48,18 @@ void AbstractCompany::setIncome(double income)
 
 void AbstractCompany::setArea(double area)
 {
-    area_ = area;
+    if(area>=0)
+        area_ = area;
+    else
+        throw QString("negative area");
 }
 
 void AbstractCompany::setNumberOfEmployees(int numberOfEmployees)
 {
-    numberOfEmployees_ = numberOfEmployees;
+    if(numberOfEmployees>=0)
+        numberOfEmployees_ = numberOfEmployees;
+    else
+        throw QString("negative number of employees");
 }
 
 QString AbstractCompany::getCompanyName()
