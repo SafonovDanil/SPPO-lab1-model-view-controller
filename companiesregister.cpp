@@ -1,27 +1,40 @@
 #include "companiesregister.h"
 #include <QList>
 #include <QString>
-class iCompany;
-//public
+#include <QtAlgorithms>
+
+class AbstractCompany;
 
 CompaniesRegister& CompaniesRegister:: instance()
 {
-    CompaniesRegister register;
-    return register;
+    static CompaniesRegister companiesRegister;
+    return companiesRegister;
 }
-void addCompany(iCompany* company)
+
+void CompaniesRegister::addCompany(AbstractCompany& company)
 {
     if(!register_.contains(company))
         register_.push_back(company);
 }
-void removeCompany(iCompany* company);
-int getRegisterSize();
-iCompany getCompany(int ix);
-~CompaniesRegister();
 
-
-
-CompaniesRegister::CompaniesRegister()
+bool CompaniesRegister::removeCompany(AbstractCompany& company)
 {
+   return(register_.removeOne(company));
+}
 
+int CompaniesRegister::getRegisterSize()
+{
+    return(register_.size());
+}
+
+AbstractCompany& CompaniesRegister::getCompany(int i)
+{
+        return register_[i];
+}
+
+
+CompaniesRegister::~CompaniesRegister()
+{
+    qDeleteAll(register_);
+    register_.clear();
 }

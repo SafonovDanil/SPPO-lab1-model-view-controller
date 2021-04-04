@@ -3,21 +3,25 @@
 #include <QList>
 #include <QString>
 
-class iCompany;
+class AbstractCompany;
 
 class CompaniesRegister
 {
 public:
     static CompaniesRegister& instance();
-    void addCompany(iCompany* company);
-    void removeCompany(iCompany* company);
+    void addCompany(AbstractCompany& company);
+    bool removeCompany(AbstractCompany& company);
     int getRegisterSize();
-    iCompany getCompany(int ix);
+    AbstractCompany& getCompany(int i);
     ~CompaniesRegister();
 
+
 private:
-    CompaniesRegister();
-    static QList<iCompany> register_;
+    CompaniesRegister() = default;
+    CompaniesRegister(const CompaniesRegister &companiesRegister) = delete;
+    CompaniesRegister& operator = (const CompaniesRegister &companiesRegister) = delete;
+
+    static QList<AbstractCompany> register_;
 };
 
 #endif // COMPANIESREGISTER_H
