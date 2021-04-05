@@ -1,9 +1,6 @@
 #include "companiesregister.h"
-#include <QList>
-#include <QString>
-#include <QtAlgorithms>
 
-class AbstractCompany;
+
 
 CompaniesRegister& CompaniesRegister:: instance()
 {
@@ -11,13 +8,13 @@ CompaniesRegister& CompaniesRegister:: instance()
     return companiesRegister;
 }
 
-void CompaniesRegister::addCompany(AbstractCompany& company)
+void CompaniesRegister::addCompany(AbstractCompany* company)
 {
     if(!register_.contains(company))
         register_.push_back(company);
 }
 
-bool CompaniesRegister::removeCompany(AbstractCompany& company)
+bool CompaniesRegister::removeCompany(AbstractCompany* company)
 {
    return(register_.removeOne(company));
 }
@@ -27,7 +24,7 @@ int CompaniesRegister::getRegisterSize()
     return(register_.size());
 }
 
-AbstractCompany& CompaniesRegister::getCompany(int i)
+AbstractCompany* CompaniesRegister::getCompany(int i)
 {
         return register_[i];
 }

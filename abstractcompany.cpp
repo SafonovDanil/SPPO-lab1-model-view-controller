@@ -1,13 +1,17 @@
 #include "abstractcompany.h"
 
-AbstractCompany::AbstractCompany(QString companyName, QList<QString> ownersList, double income, double area, int numberOfEmployees)
+
+
+AbstractCompany::AbstractCompany(){}
+
+AbstractCompany::AbstractCompany(const QString& companyName, QList<QString>& ownersList, double income, double area, int numberOfEmployees)
 {
-    if(!companyName_.isEmpty())
+    if(!companyName.isEmpty())
         companyName_ = companyName;
     else
         throw QString("empty company name");
 
-    if(!ownersList_.isEmpty())
+    if(!ownersList.isEmpty())
         ownersList_ = ownersList;
     else
         throw QString("empty owners list");
@@ -27,15 +31,15 @@ AbstractCompany::AbstractCompany(QString companyName, QList<QString> ownersList,
 
 void AbstractCompany::setCompanyName(QString companyName)
 {
-    if(!companyName_.isEmpty())
+    if(!companyName.isEmpty())
         companyName_ = companyName;
     else
         throw QString("empty company name");
 }
 
-void AbstractCompany::setOwnersList (QList<QString> ownersList)
+void AbstractCompany::setOwnersList(QList<QString>& ownersList)
 {
-    if(!ownersList_.isEmpty())
+    if(!ownersList.isEmpty())
         ownersList_ = ownersList;
     else
         throw QString("empty owners list");

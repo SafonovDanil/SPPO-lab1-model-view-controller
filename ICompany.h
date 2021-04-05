@@ -1,6 +1,7 @@
 #ifndef ICOMPANY_H
 #define ICOMPANY_H
 #include <QString>
+#include <QList>
 
 class ICompany
 {
@@ -12,8 +13,8 @@ public:
         COMPANY_TYPE_3
     };
     ICompany() = default;
-    virtual void setCompanyName(QString CompanyName) = 0;
-    virtual void setOwnersList(QList<QString> ownersList) = 0;
+    virtual void setCompanyName(QString companyName) = 0;
+    virtual void setOwnersList(QList<QString>& ownersList) = 0;
     virtual void setIncome(double income) = 0;
     virtual void setArea(double area) = 0;
     virtual void setNumberOfEmployees(int n) = 0;

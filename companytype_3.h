@@ -6,8 +6,10 @@
 class CompanyType_3: public AbstractCompany
 {
 public:
-    CompanyType_3() = default;
-    CompanyType_3(QString name, QList<QString> &owners, double income, double area, int employeesNumber);
+
+    CompanyType_3();
+    CompanyType_3(const QString& companyName, QList<QString> &ownersList, double income, double area, int employeesNumber);
+
     double getTax() override;
     COMPANY_TYPE getCompanyType() override;
     ~CompanyType_3() = default;

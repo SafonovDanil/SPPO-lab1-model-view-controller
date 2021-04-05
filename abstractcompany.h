@@ -1,20 +1,18 @@
 #ifndef ABSTRACTCOMPANY_H
 #define ABSTRACTCOMPANY_H
-#include <QString>
-#include <QList>
 
 #include "ICompany.h"
+#include <QString>
 
 class AbstractCompany:public ICompany
 {
 public:
 
-   ;
-    AbstractCompany() = default;
-    AbstractCompany(QString companyName, QList<QString> ownersList, double income, double area, int numberOfEmployees);
+    AbstractCompany();
+    AbstractCompany(const QString& companyName, QList<QString>& ownersList, double income, double area, int numberOfEmployees);
 
     virtual void setCompanyName(QString companyName);
-    virtual void setOwnersList(QList<QString> ownersList);
+    virtual void setOwnersList(QList<QString> &ownersList);
     virtual void setIncome(double income);
     virtual void setArea(double area);
     virtual void setNumberOfEmployees(int numberOfEmployees);
